@@ -98,5 +98,5 @@ rm -rf %{buildroot}
 - updated to 0.4.1
 - added support for SysV init (e.g. EL <7)
 
-* Thu Oct 8 2014 Don Ky <don.d.ky@gmail.com>
+* Wed Oct 8 2014 Don Ky <don.d.ky@gmail.com>
 - updated to 0.4.0
