@@ -1,6 +1,7 @@
 RPM Spec for Consul
 ======================
-
+This is a fork from the original with all pull requests applied and warnings fixed for our Scientific Linux 7 systems.
+----------
 Tries to follow the [packaging guidelines](https://fedoraproject.org/wiki/Packaging:Guidelines) from Fedora.
 
 * Binary: `/usr/bin/consul`
