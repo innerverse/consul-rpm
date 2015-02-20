@@ -4,11 +4,10 @@
 RPM_BUILD_DIR="$HOME/rpmbuild"
 
 if [ ! -d "RPM_BUILD_DIR" ]; then
-	echo "$HOME/rpmbuild doesn't exist, creating"
-	mkdir -p $HOME/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
-	cp ./SPECS/consul.spec $HOME/rpmbuild/SPECS/
-	cp ./SOURCES/consul.service $HOME/rpmbuild/SOURCES/
-	cp ./SOURCES/consul.sysconfig $HOME/rpmbuild/SOURCES/
+    echo "$HOME/rpmbuild doesn't exist, creating"
+    mkdir -p $HOME/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+    cp ./SPECS/consul.spec $HOME/rpmbuild/SPECS/
+    cp ./SOURCES/consul.* $HOME/rpmbuild/SOURCES/
 fi
 
 spectool -g -R $HOME/rpmbuild/SPECS/consul.spec
