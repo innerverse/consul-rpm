@@ -1,15 +1,30 @@
-RPM Spec for Consul
-======================
-This is a fork from the original with all pull requests applied and warnings fixed for our Scientific Linux 7 systems.
-----------
+# RPM Spec for Consul
+
+### This is a fork from the original with all pull requests applied and warnings fixed.
+
 Tries to follow the [packaging guidelines](https://fedoraproject.org/wiki/Packaging:Guidelines) from Fedora.
 
 * Binary: `/usr/bin/consul`
 * Config: `/etc/consul.d/`
 * Sysconfig: `/etc/sysconfig/consul`
 
-To Build
----------
+# Build (automated)
+
+* Ensure that `rpmdevtools` and `mock` are available:
+
+    ```
+    sudo yum install rpmdevtools mock
+    ```
+
+* Run `autobuild.sh`:
+
+    ```
+    cd ${repo}/
+    chmod u+x autobuild.sh
+    ./autobuild.sh
+    ```
+
+# Build (manual)
 
 To build the RPM (non-root user):
 
@@ -46,18 +61,7 @@ To build the RPM (non-root user):
     ```
     sudo mock -r fedora-19-x86_64 --resultdir rpmbuild/RPMS/x86_64/ rpmbuild/SRPMS/consul-0.2.0-1.fc20.src.rpm 
     ```
-8.  (Optional) Automated build script
-
-	 To simplify all steps above into a single script, autobuild.sh was created. 
-
-    ```
-	 chmod u+x autobuild.sh
-    ./autobuild.sh
-    ```
-
-
-To run
----------------
+# Run
 
 1. Install the rpm
 2. Put config files in `/etc/consul.d/`
@@ -65,6 +69,6 @@ To run
 4. Start the service and tail the logs `systemctl start consul.service` and `journalctl -f`
   * To enable at reboot `systemctl enable consul.service`
 
-More info
----------
+# More info
+
 See the [consul.io](http://www.consul.io) website.
