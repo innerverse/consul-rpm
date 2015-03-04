@@ -7,6 +7,7 @@ Tries to follow the [packaging guidelines](https://fedoraproject.org/wiki/Packag
 * Binary: `/usr/bin/consul`
 * Config: `/etc/consul.d/`
 * Sysconfig: `/etc/sysconfig/consul`
+* WebUI: `/usr/share/consul/`
 
 # Build (automated)
 

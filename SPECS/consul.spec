@@ -1,15 +1,16 @@
 Name:           consul
 Version:        0.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Consul is a tool for service discovery and configuration. Consul is distributed, highly available, and extremely scalable.
 
 Group:          System Environment/Daemons
 License:        MPLv2.0
 URL:            http://www.consul.io
-Source0:        https://dl.bintray.com/mitchellh/consul/%{version}_linux_amd64.zip
+Source0:        https://dl.bintray.com/mitchellh/%{name}/%{version}_linux_amd64.zip
 Source1:        %{name}.sysconfig
 Source2:        %{name}.service
 Source3:        %{name}.init
+Source4:        https://dl.bintray.com/mitchellh/%{name}/%{version}_web_ui.zip
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %if 0%{?fedora} >= 14 || 0%{?rhel} >= 7
@@ -28,7 +29,7 @@ Consul provides several key features:
  - Multi-Datacenter - Consul is built to be datacenter aware, and can support any number of regions without complex configuration.
 
 %prep
-%setup -q -c
+%setup -q -c -b 4
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
@@ -37,6 +38,8 @@ mkdir -p %{buildroot}/%{_sysconfdir}/%{name}.d
 mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig
 cp %{SOURCE1} %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
 mkdir -p %{buildroot}/%{_sharedstatedir}/%{name}
+mkdir -p %{buildroot}/%{_prefix}/share/%{name}
+cp -r dist/* %{buildroot}/%{_prefix}/share/%{name}
 
 %if 0%{?fedora} >= 14 || 0%{?rhel} >= 7
 mkdir -p %{buildroot}/%{_unitdir}
@@ -88,12 +91,16 @@ rm -rf %{buildroot}
 %{_initrddir}/%{name}
 %endif
 %attr(755, root, root) %{_bindir}/consul
+%attr(755, root, consul) %{_prefix}/share/%{name}
 
 %doc
 
 
 
 %changelog
+* Wed Mar 04 2015 Dan Phrawzty <phrawzty@mozilla.com>
+- add webui
+
 * Fri Feb 20 2015 Dan Phrawzty <phrawzty@mozilla.com>
 - updated to 0.5.0
 
