@@ -68,6 +68,20 @@ To build the RPM (non-root user):
 * Start the service and tail the logs `systemctl start consul.service` and `journalctl -f`.
   * To enable at reboot `systemctl enable consul.service`.
 
+## Config
+
+n.b. Config files are loaded in lexicographical order from the `config-dir`.
+
+Example:
+```json
+{
+    "server": true,
+    "data_dir": "/var/lib/consul",
+    "log_level": "INFO",
+    "ui_dir": "/usr/share/consul"
+}
+```
+
 # More info
 
 See the [consul.io](http://www.consul.io) website.
