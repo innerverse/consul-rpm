@@ -94,7 +94,7 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Wed June 3 2015 Seth Miller <innerverse@gmail.com>
+* Wed Jun 3 2015 Seth Miller <innerverse@gmail.com>
 - updated to 0.5.2
 
 * Sun May 17 2015 Seth Miller <innerverse@gmail.com>
